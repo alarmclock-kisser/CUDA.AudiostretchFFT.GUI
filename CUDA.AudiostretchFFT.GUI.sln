@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUDA.AudiostretchFFT.GUI", "CUDA.AudiostretchFFT.GUI\CUDA.AudiostretchFFT.GUI.csproj", "{9C7F31AB-EE87-4705-8843-A308784DACCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C7F31AB-EE87-4705-8843-A308784DACCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C7F31AB-EE87-4705-8843-A308784DACCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C7F31AB-EE87-4705-8843-A308784DACCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C7F31AB-EE87-4705-8843-A308784DACCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC4BEAAF-3B77-45D7-B9E0-D6AB1CE5B3BC}
+	EndGlobalSection
+EndGlobal
