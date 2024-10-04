@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.DirectoryServices.ActiveDirectory;
 
 namespace CUDA.AudiostretchFFT.GUI
 {
@@ -35,24 +34,19 @@ namespace CUDA.AudiostretchFFT.GUI
 		// Methods  
 		private void ToggleGuiElements(string arg = "auto")
 		{
-			// args can be "off" or "on", default "auto" (check logic & state)  
-			if (arg == "auto")
+			switch (arg)
 			{
-				// Check per GUI element depending on the state  
+				// args can be "off" or "on", default "auto" (check logic & state)  
+				case "auto":
+					// Check per GUI element depending on the state  
+					break;
+				case "off":
+					// Disable all GUI elements  
+					break;
+				case "on":
+					// Enable all GUI elements  
+					break;
 			}
-
-			if (arg == "off")
-			{
-				// Disable all GUI elements  
-			}
-
-			if (arg == "on")
-			{
-				// Enable all GUI elements  
-			}
-
-			// End  
-			return;
 		}
 
 		private void LoadDevices()
@@ -68,8 +62,8 @@ namespace CUDA.AudiostretchFFT.GUI
 					// Get full device name and its id is i
 					string name = CuH.GetDeviceName(i);
 
-					// Remove first part of the name til ' '("NVIDIA ")
-					name = name.Substring(name.IndexOf(' ') + 1);
+					// Remove first part of the name til ("NVIDIA ")
+					name = name[(name.IndexOf(' ') + 1)..];
 
 					// Add device name to listBox_Devices
 					this.listBox_Devices.Items.Add(i + ": " + name);
@@ -86,7 +80,7 @@ namespace CUDA.AudiostretchFFT.GUI
 				CuH.DisposeContext(CuH.Context);
 
 				// Toggle GUI elements (label_Devices to underline, "Hot Track", "Initialize selected device...")
-				this.label_Devices.Text = "Initialize selected device...";
+				this.label_Devices.Text = @"Initialize selected device...";
 				this.label_Devices.ForeColor = Color.FromName("HotTrack");
 				this.label_Devices.Font = new Font(this.label_Devices.Font, FontStyle.Underline);
 
@@ -119,18 +113,18 @@ namespace CUDA.AudiostretchFFT.GUI
 			name = name.Split(' ')[0];
 
 			// If name is unavailable, set it to its id (GreenYellow)
-			if (name == null)
+			if (name == " ")
 			{
-				this.label_Devices.Text = "[" + id + "] initialized!";
+				this.label_Devices.Text = @"[" + id + @"] initialized!";
 				this.label_Devices.ForeColor = Color.GreenYellow;
-				this.label_Devices.Font = new Font(this.label_Devices.Font, FontStyle.Bold);
 			}
 			else
 			{
-				this.label_Devices.Text = name + " initialized!";
+				this.label_Devices.Text = name + @" initialized!";
 				this.label_Devices.ForeColor = Color.Green;
-				this.label_Devices.Font = new Font(this.label_Devices.Font, FontStyle.Bold);
 			}
+
+			this.label_Devices.Font = new Font(this.label_Devices.Font, FontStyle.Bold);
 
 			// Place '* ' before the selected entry value in listBox_Devices
 			this.listBox_Devices.Items[id] = "⭐ " + this.listBox_Devices.Items[id];
@@ -250,15 +244,18 @@ namespace CUDA.AudiostretchFFT.GUI
 				if (this.FiH.InputFiles.Count == 0)
 				{
 					// 0 files found
-					this.label_FilesList.Text = "No files found!";
+					this.label_FilesList.Text = @"No files found!";
 					this.label_FilesList.ForeColor = Color.Red;
 				}
 				else
 				{
 					// x files found
-					this.label_FilesList.Text = FiH.InputFiles.Count + " files found!";
+					this.label_FilesList.Text = FiH.InputFiles.Count + @" files found!";
 					this.label_FilesList.ForeColor = Color.Green;
 				}
+
+				// RETURN
+				return;
 			}
 			if (this.label_FilesList.Text.StartsWith("No"))
 			{
@@ -266,17 +263,28 @@ namespace CUDA.AudiostretchFFT.GUI
 				this.listBox_FilesList.Items.Clear();
 
 				// Reset label_FilesList
-				this.label_FilesList.Text = "Load input files...";
+				this.label_FilesList.Text = @"Load input files...";
 				this.label_FilesList.ForeColor = Color.FromName("HotTrack");
+
+				// RETURN
+				return;
 			}
-			if (this.label_FilesList.Text[0].GetType() == typeof(int))
+			if (this.FiH.InputFiles.Count > 0)
 			{
 				// if (int) x files found -> Unload files & reset label_FilesList & listBox_FilesList
 				this.FiH.InputFiles.Clear();
-				this.label_FilesList.Text = "Load input files...";
+				this.label_FilesList.Text = @"Load input files...";
 				this.label_FilesList.ForeColor = Color.FromName("HotTrack");
 				this.listBox_FilesList.Items.Clear();
+
+				// RETURN
+				return;
 			}
+		}
+
+		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Application.Exit(null);
 		}
 	}
 }

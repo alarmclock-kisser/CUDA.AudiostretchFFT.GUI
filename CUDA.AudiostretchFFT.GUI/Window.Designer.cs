@@ -61,7 +61,6 @@ namespace CUDA.AudiostretchFFT.GUI
 			label_FilesList = new Label();
 			listBox_FilesList = new ListBox();
 			button_Open = new Button();
-			waveViewer = new NAudio.Gui.WaveViewer();
 			menuStrip.SuspendLayout();
 			SuspendLayout();
 			// 
@@ -84,9 +83,10 @@ namespace CUDA.AudiostretchFFT.GUI
 			// exitToolStripMenuItem
 			// 
 			exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			exitToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.X;
-			exitToolStripMenuItem.Size = new Size(136, 22);
+			exitToolStripMenuItem.ShortcutKeys =  Keys.Control | Keys.X;
+			exitToolStripMenuItem.Size = new Size(180, 22);
 			exitToolStripMenuItem.Text = "Exit";
+			exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
 			// 
 			// editToolStripMenuItem
 			// 
@@ -118,14 +118,14 @@ namespace CUDA.AudiostretchFFT.GUI
 			// strongestToolStripMenuItem
 			// 
 			strongestToolStripMenuItem.Name = "strongestToolStripMenuItem";
-			strongestToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.I;
+			strongestToolStripMenuItem.ShortcutKeys =  Keys.Control | Keys.I;
 			strongestToolStripMenuItem.Size = new Size(218, 22);
 			strongestToolStripMenuItem.Text = "Strongest";
 			// 
 			// firstToolStripMenuItem
 			// 
 			firstToolStripMenuItem.Name = "firstToolStripMenuItem";
-			firstToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.I;
+			firstToolStripMenuItem.ShortcutKeys =  Keys.Control | Keys.Shift | Keys.I;
 			firstToolStripMenuItem.Size = new Size(218, 22);
 			firstToolStripMenuItem.Text = "First";
 			// 
@@ -138,14 +138,14 @@ namespace CUDA.AudiostretchFFT.GUI
 			// removeToolStripMenuItem
 			// 
 			removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-			removeToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.R;
+			removeToolStripMenuItem.ShortcutKeys =  Keys.Control | Keys.R;
 			removeToolStripMenuItem.Size = new Size(160, 22);
 			removeToolStripMenuItem.Text = "Remove";
 			// 
 			// listToolStripMenuItem
 			// 
 			listToolStripMenuItem.Name = "listToolStripMenuItem";
-			listToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.L;
+			listToolStripMenuItem.ShortcutKeys =  Keys.Control | Keys.L;
 			listToolStripMenuItem.Size = new Size(160, 22);
 			listToolStripMenuItem.Text = "List...";
 			// 
@@ -165,21 +165,21 @@ namespace CUDA.AudiostretchFFT.GUI
 			// importToolStripMenuItem
 			// 
 			importToolStripMenuItem.Name = "importToolStripMenuItem";
-			importToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.I;
+			importToolStripMenuItem.ShortcutKeys =  Keys.Control | Keys.Shift | Keys.I;
 			importToolStripMenuItem.Size = new Size(239, 22);
 			importToolStripMenuItem.Text = "Import";
 			// 
 			// exportToolStripMenuItem
 			// 
 			exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-			exportToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.E;
+			exportToolStripMenuItem.ShortcutKeys =  Keys.Control | Keys.Shift | Keys.E;
 			exportToolStripMenuItem.Size = new Size(239, 22);
 			exportToolStripMenuItem.Text = "Export";
 			// 
 			// defaultToolStripMenuItem
 			// 
 			defaultToolStripMenuItem.Name = "defaultToolStripMenuItem";
-			defaultToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.D;
+			defaultToolStripMenuItem.ShortcutKeys =  Keys.Control | Keys.Shift | Keys.D;
 			defaultToolStripMenuItem.Size = new Size(239, 22);
 			defaultToolStripMenuItem.Text = "Default";
 			// 
@@ -214,7 +214,7 @@ namespace CUDA.AudiostretchFFT.GUI
 			// label_Devices
 			// 
 			label_Devices.AutoSize = true;
-			label_Devices.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+			label_Devices.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point,  0);
 			label_Devices.ForeColor = SystemColors.HotTrack;
 			label_Devices.Location = new Point(12, 24);
 			label_Devices.Name = "label_Devices";
@@ -290,14 +290,14 @@ namespace CUDA.AudiostretchFFT.GUI
 			// label_FilesList
 			// 
 			label_FilesList.AutoSize = true;
-			label_FilesList.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+			label_FilesList.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point,  0);
 			label_FilesList.ForeColor = SystemColors.HotTrack;
 			label_FilesList.Location = new Point(162, 24);
 			label_FilesList.Name = "label_FilesList";
 			label_FilesList.Size = new Size(97, 15);
 			label_FilesList.TabIndex = 10;
 			label_FilesList.Text = "Load input files...";
-			label_FilesList.Click += this.label_FilesList_Click;
+			label_FilesList.Click += label_FilesList_Click;
 			// 
 			// listBox_FilesList
 			// 
@@ -319,24 +319,11 @@ namespace CUDA.AudiostretchFFT.GUI
 			button_Open.UseVisualStyleBackColor = true;
 			button_Open.Click += button_Open_Click;
 			// 
-			// waveViewer
-			// 
-			waveViewer.Location = new Point(415, 211);
-			waveViewer.MaximumSize = new Size(273, 150);
-			waveViewer.MinimumSize = new Size(273, 150);
-			waveViewer.Name = "waveViewer";
-			waveViewer.SamplesPerPixel = 128;
-			waveViewer.Size = new Size(273, 150);
-			waveViewer.StartPosition = 0L;
-			waveViewer.TabIndex = 13;
-			waveViewer.WaveStream = null;
-			// 
 			// Window_Main
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(700, 437);
-			Controls.Add(waveViewer);
 			Controls.Add(button_Open);
 			Controls.Add(listBox_FilesList);
 			Controls.Add(label_FilesList);
